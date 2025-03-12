@@ -1,0 +1,82 @@
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DECAY_DATE</th>
+      <th>LAUNCH_DATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2020-10-13</td>
+      <td>2019-05-24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020-09-29</td>
+      <td>2019-05-24</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2020-10-13</td>
+      <td>2019-05-24</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2021-09-26</td>
+      <td>2019-05-24</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020-09-02</td>
+      <td>2019-05-24</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3521</th>
+      <td>None</td>
+      <td>2022-10-28</td>
+    </tr>
+    <tr>
+      <th>3522</th>
+      <td>None</td>
+      <td>2022-10-28</td>
+    </tr>
+    <tr>
+      <th>3523</th>
+      <td>None</td>
+      <td>2022-10-28</td>
+    </tr>
+    <tr>
+      <th>3524</th>
+      <td>None</td>
+      <td>2022-10-28</td>
+    </tr>
+    <tr>
+      <th>3525</th>
+      <td>None</td>
+      <td>2022-10-28</td>
+    </tr>
+  </tbody>
+</table>
+<p>3526 rows × 2 columns</p>
+</div>
