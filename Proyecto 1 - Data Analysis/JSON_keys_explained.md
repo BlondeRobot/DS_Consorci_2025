@@ -52,7 +52,7 @@ velocity_kms: Current velocity (7.64 km/s)
 Launch and Status Information
 
 LAUNCH_DATE: When the satellite was launched (June 13, 2020)
-SITE: Launch site (AFETR - Air Force Eastern Test Range, Cape Canaveral)
+SITE: Launch site (AFETR - Air Force Eastern Test Range, Cape Canaveral/AFWTR - Air Force Western Test Range, Vandenberg, Santa Barbara,CA)
 DECAY_DATE: When the satellite deorbited (null, as it was still in orbit)
 DECAYED: Whether the satellite has deorbited (0 = no)
 
