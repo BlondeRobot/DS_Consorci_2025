@@ -24,13 +24,13 @@ EPHEMERIS_TYPE: Type of ephemeris used (0 indicates SGP4/SDP4 model)
 Orbit Parameters
 
 EPOCH: The reference time for which these orbital elements are valid (June 19, 2020)
-MEAN_MOTION: Number of orbits per day (15.89)
+MEAN_MOTION: Number of orbits per day (15.89), how fast the object is going on average.
 ECCENTRICITY: Shape of the orbit (0.0087515, nearly circular)
 INCLINATION: Tilt of the orbit relative to Earth's equator (53.002 degrees)
 RA_OF_ASC_NODE: Right Ascension of the Ascending Node, the longitude where the satellite crosses the equator going north (266.3302 degrees)
 ARG_OF_PERICENTER: Argument of Perigee, the angle from the ascending node to the closest approach to Earth (69.9474 degrees)
 MEAN_ANOMALY: Position of the satellite in its orbit at epoch (221.4733 degrees)
-SEMIMAJOR_AXIS: Average distance from the center of the orbit (6683.699 km)
+SEMIMAJOR_AXIS: Average distance from the center of the orbit (6683.699 km) - average distance between the satellite and Earth.
 PERIOD: Time to complete one orbit (90.632 minutes)
 APOAPSIS: Furthest point from Earth's surface (364.057 km)
 PERIAPSIS: Closest point to Earth's surface (247.072 km)
@@ -38,8 +38,8 @@ REV_AT_EPOCH: Revolution number at epoch (212)
 
 Perturbation and Drag Terms
 
-MEAN_MOTION_DOT: First derivative of mean motion (0.03503094 revs/day²), indicates orbit decay rate
-MEAN_MOTION_DDOT: Second derivative of mean motion (0.01265 revs/day³)
+MEAN_MOTION_DOT: First derivative of mean motion (0.03503094 revs/day²), indicates orbit decay rate, how fast the speed of satellite is increasing or decreasing (positive - speed is increasing, negative sat speed is decreasing)
+MEAN_MOTION_DDOT: Second derivative of mean motion (0.01265 revs/day³), tells you how the change in speed (ṅ) is changing. This is the change in the rate of change
 BSTAR: Drag term (0.01007), represents atmospheric drag effect on the satellite
 
 Current Position and Velocity (at epoch)
