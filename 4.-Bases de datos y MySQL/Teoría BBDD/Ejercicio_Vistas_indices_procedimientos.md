@@ -127,6 +127,96 @@ ON Album (release_date);
 -- total exec time went down from 2:24 to 1:31
 
  - Crea un procedimiento que ejecute la query, encuentre los elementos a actualizar y los actualice en la base de datos con `UPDATE` y ejecútalo con `CALL`
+
+ use bandas;
+UPDATE bandas.Band b
+SET b.band_name = CONCAT(b.band_name, '_SUPERBAND')
+WHERE b.band_name LIKE 'A%'
+AND b.band_id IN (
+    SELECT a.band_id
+    FROM bandas.Album a
+    GROUP BY a.band_id
+    HAVING MAX(a.release_date) < '2004-01-01'
+)
+AND b.band_id IN (
+    SELECT g.band_id
+    FROM bandas.band_genre g
+    GROUP BY g.band_id
+    HAVING COUNT(DISTINCT g.genre_name) = 1
+)
+AND b.band_id NOT IN (
+    SELECT m.band_id
+    FROM bandas.band_musician m
+    WHERE m.musician_status = 'former'
+);
+
+use bandas;
+UPDATE bandas.Band b
+SET b.band_name = CONCAT(b.band_name, '_SUPERBAND')
+WHERE b.band_id IN (
+    SELECT band_id FROM (
+        SELECT b2.band_id
+        FROM bandas.Band b2
+        WHERE b2.band_name LIKE 'A%'
+        AND b2.band_id IN (
+            SELECT a.band_id
+            FROM bandas.Album a
+            GROUP BY a.band_id
+            HAVING MAX(a.release_date) < '2004-01-01'
+        )
+        AND b2.band_id IN (
+            SELECT g.band_id
+            FROM bandas.band_genre g
+            GROUP BY g.band_id
+            HAVING COUNT(DISTINCT g.genre_name) = 1
+        )
+        AND b2.band_id NOT IN (
+            SELECT m.band_id
+            FROM bandas.band_musician m
+            WHERE m.musician_status = 'former'
+        )
+    ) AS bands_to_update
+);
+
+
+/*stored procedure*/
+
+DELIMITER $$
+
+CREATE PROCEDURE UpdateSuperband()
+BEGIN
+UPDATE bandas.Band b
+SET b.band_name = CONCAT(b.band_name, '_SUPERBAND')
+WHERE b.band_id IN (
+    SELECT band_id FROM (
+        SELECT b2.band_id
+        FROM bandas.Band b2
+        WHERE b2.band_name LIKE 'A%'
+        AND b2.band_id IN (
+            SELECT a.band_id
+            FROM bandas.Album a
+            GROUP BY a.band_id
+            HAVING MAX(a.release_date) < '2004-01-01'
+        )
+        AND b2.band_id IN (
+            SELECT g.band_id
+            FROM bandas.band_genre g
+            GROUP BY g.band_id
+            HAVING COUNT(DISTINCT g.genre_name) = 1
+        )
+        AND b2.band_id NOT IN (
+            SELECT m.band_id
+            FROM bandas.band_musician m
+            WHERE m.musician_status = 'former'
+        )
+    ) AS bands_to_update
+);
+END $$
+
+DELIMITER ;
+
+CALL UpdateSuperband();
+
  - Crea una vista que muestre los cambios
  
    
