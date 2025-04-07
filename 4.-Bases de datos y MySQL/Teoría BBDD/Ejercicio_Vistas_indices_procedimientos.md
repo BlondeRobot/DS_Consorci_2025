@@ -218,6 +218,32 @@ DELIMITER ;
 CALL UpdateSuperband();
 
  - Crea una vista que muestre los cambios
+
+CREATE VIEW SuperbandView AS
+SELECT b.band_name
+FROM bandas.Band b
+
+WHERE b.band_name LIKE 'A%' and b.band_name LIKE '%_SUPERBAND'
+
+AND b.band_id IN (
+    SELECT a.band_id
+    FROM bandas.Album a
+    GROUP BY a.band_id
+    HAVING MAX(a.release_date) < '2004-01-01'
+)
+
+AND b.band_id IN (
+    SELECT g.band_id
+    FROM bandas.band_genre g
+    GROUP BY g.band_id
+    HAVING COUNT(DISTINCT g.genre_name) = 1
+)
+
+AND b.band_id NOT IN (
+    SELECT m.band_id
+    FROM bandas.band_musician m
+    WHERE m.musician_status = 'former'
+)
  
    
    
